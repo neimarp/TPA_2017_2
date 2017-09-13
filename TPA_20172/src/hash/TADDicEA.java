@@ -40,7 +40,18 @@ public class TADDicEA {
         } while (p!=N);
         return null;
     }
-    public Object insertItem(Object k, Object o){return null;}
+    public Object insertItem(Object k, Object o){
+        int i = hashEngine.h(k);
+        int p = 0;
+        do {            
+            ItemDic item = vetBuckets[i];
+            if (item ==null) {
+                
+            } else {
+            }
+        } while (p!=N);
+        return null;
+    }
     public Object removeElement(Object k){return null;}
     public int size(){return tam;}
     public boolean isEmpty(){return false;}
