@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 public class TADDEA extends TADHash{
-    public static ItemDic NO_SUCH_KEY = new ItemDic(null, null);
+    
     private ItemDic[] vetBuckets;
     public TADDEA(HashEngine he) {
         vetBuckets = new ItemDic[64];
@@ -23,14 +23,14 @@ public class TADDEA extends TADHash{
     
     @Override
     public Object findElement(Object k){
-        int i = hashEngine.h(k);
+        int i = hashEngine.hashCode(k);
         int p = 0;
         do {            
             ItemDic c = vetBuckets[i];
             if (c==null) {
                 return NO_SUCH_KEY;
             } else {
-                if (c.getK()==k) {
+                if (c.getKey()==k) {
                     return c.getElement();
                 } else {
                     i = (i+1)%N;
@@ -42,7 +42,7 @@ public class TADDEA extends TADHash{
     }
     @Override
     public boolean insertItem(Object k, Object o){
-        int i = hashEngine.h(k);
+        int i = hashEngine.hashCode(k);
         int p = 0;
         do {            
             ItemDic item = vetBuckets[i];
@@ -58,14 +58,14 @@ public class TADDEA extends TADHash{
     }
     @Override
     public Object removeElement(Object k){
-        int i = hashEngine.h(k);
+        int i = hashEngine.hashCode(k);
         int p = 0;
         do {            
             ItemDic c = vetBuckets[i];
             if (c==null) {
                 return NO_SUCH_KEY;
             } else {
-                if (c.getK()==k) {
+                if (c.getKey()==k) {
                     vetBuckets[i]= null;
                     return c.getElement();
                 } else {
@@ -83,7 +83,7 @@ public class TADDEA extends TADHash{
         LinkedList lista = new LinkedList();
         for (ItemDic vetBucket : vetBuckets) {
             if (vetBucket!=null) {
-                lista.add(vetBucket.getK());
+                lista.add(vetBucket.getKey());
              }
         }
         return lista;

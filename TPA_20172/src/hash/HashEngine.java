@@ -2,6 +2,6 @@
 package hash;
 
 
-public class HashEngine {
-    public int h(Object k){ return 0;}
+public interface HashEngine {
+    public int hashCode(Object k);//
 }

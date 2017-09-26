@@ -11,7 +11,7 @@ public class ItemDic {
         this.element = element;
     }
 
-    public Object getK() {
+    public Object getKey() {
         return k;
     }
 

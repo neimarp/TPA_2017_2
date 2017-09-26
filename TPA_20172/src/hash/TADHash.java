@@ -4,30 +4,12 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 public abstract class TADHash {
+        public static ItemDic NO_SUCH_KEY = new ItemDic(null, null);
 	protected int tamanho;
 	protected int N;
 	HashEngine hashEngine;
-	/*
-	public TADHash() {
-		hashEngine = new HashEngine();
-		tamanho = 1000;
-		qtdItens = 0;
-	}
-	
-	public TADHash(HashEngine he) {
-		hashEngine = he;
-		tamanho = 1000;
-		qtdItens = 0;
-	}
-	
-	public TADHash(HashEngine he, int n) {
-		hashEngine = he;
-		//tamanho = (int) (n / 0.4);
-		tamanho = n;
-		qtdItens = 0;
-	}
-	*/
-	public abstract boolean insertItem(Object key, Object elem);
+        
+        public abstract boolean insertItem(Object key, Object elem);
 	
 	public abstract Object findElement(Object key);
 	
