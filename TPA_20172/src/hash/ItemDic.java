@@ -18,6 +18,10 @@ public class ItemDic {
     public Object getElement() {
         return element;
     }
+
+    public void setElement(Object element) {
+        this.element = element;
+    }
     
     
 }

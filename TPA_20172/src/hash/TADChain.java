@@ -8,55 +8,50 @@ import java.util.LinkedList;
 public class TADChain extends TADHash {
 
     private LinkedList<ItemDic>[] conteudo;
-    
-    private int qtdPosOcupadas;
 
     public TADChain(HashEngine he) {
         hashEngine = he;
-        conteudo = (LinkedList<ItemDic>[]) new LinkedList[64];
+        conteudo = new LinkedList[64];
         N=64;
     }
 
     public TADChain(HashEngine he, int tam) {
         hashEngine = he;
-        conteudo = (LinkedList<ItemDic>[]) new LinkedList[tam];
+        conteudo = new LinkedList[tam];
         N=tam;
     }
 
     @Override
-    public void insertItem(Object key, Object elem) {
-
-        Object element = findElem(key);
+    public boolean insertItem(Object key, Object elem) {
+        boolean teste = false;
+        Object element = findElement(key);
 
         if (element != null) {
             atualizaValorItem(key, elem);
         } else {
 
             int hash = hashEngine.hashCode(key);
-            int pos = Math.abs((int) (hash % tamanho));
+            int pos = Math.abs((hash % N));
             if (conteudo[pos] == null) {
-                conteudo[pos] = new LinkedList<Item>();
-                qtdPosOcupadas++;
+                conteudo[pos] = new LinkedList<ItemDic>();
+                tamanho++;
             }
-            Item item = new Item(key, elem, hash);
+            ItemDic item = new ItemDic(key, elem);
             conteudo[pos].add(item);
-            qtdItens++;
 
-            // Verifica se o vetor atingiu 75% da taxa de ocupa��o
+            // Verifica se o vetor atingiu 75% da taxa de ocupacao
             // Aumenta em 50% o tamanho do vetor
-            double taxaOcupacao = (((double) (qtdPosOcupadas) / (double) tamanho));
+            double taxaOcupacao = (((double) (tamanho) / (double) N));
             if (taxaOcupacao >= 0.95) {
-                //printConteudo();
-                //System.out.println("");
                 redimensiona();
             }
         }
-
+        return teste;
     }
 
     protected void atualizaValorItem(Object chave, Object valor) {
         int hash = hashEngine.hashCode(chave);
-        int pos = Math.abs((int) (hash % tamanho));
+        int pos = Math.abs((int) (hash % N));
 
         LinkedList<ItemDic> listaElem = conteudo[pos];
 
@@ -64,7 +59,7 @@ public class TADChain extends TADHash {
             for (int i = 0; i < listaElem.size(); i++) {
                 if (listaElem.get(i) != null) {
                     if (listaElem.get(i).getKey().equals(chave)) {
-                        listaElem.get(i).setElem(valor);
+                        listaElem.get(i).setElement(valor);
                         break;
                     }
                 }
@@ -76,7 +71,7 @@ public class TADChain extends TADHash {
     @Override
     public Object findElement(Object key) {
         int hash = hashEngine.hashCode(key);
-        int pos = Math.abs((int) (hash % tamanho));
+        int pos = Math.abs((int) (hash % N));
         ItemDic item = null;
         LinkedList<ItemDic> listaElem = conteudo[pos];
 
@@ -101,7 +96,7 @@ public class TADChain extends TADHash {
     @Override
     public Object removeElement(Object key) {
         int hash = hashEngine.hashCode(key);
-        int pos = (int) Math.abs(hash % tamanho);
+        int pos = (int) Math.abs(hash % N);
 
         if (conteudo[pos] == null) {
             return NO_SUCH_KEY;
@@ -119,7 +114,6 @@ public class TADChain extends TADHash {
             if (achou) {
                 Object dado = aux.getElement();
                 conteudo[pos].remove(i - 1);
-                qtdItens--;
                 return dado;
             } else {
                 return NO_SUCH_KEY;
@@ -131,19 +125,19 @@ public class TADChain extends TADHash {
     protected void redimensiona() {
 
         int novoTamanho = (int) (tamanho * 1.5);
-        LinkedList<ItemDic>[] conteudoAux = (LinkedList<Item>[]) new LinkedList[novoTamanho];
+        LinkedList<ItemDic>[] conteudoAux = new LinkedList[novoTamanho];
         int hash = 0;
         int novaPos = 0;
-        qtdPosOcupadas = 0;
+        int qtdPosOcupadas = 0;
         for (int i = 0; i < tamanho; i++) {
             if (conteudo[i] != null) {
-                LinkedList<Item> listaItem = conteudo[i];
-                for (Item item : listaItem) {
-                    hash = item.getCacheHCode();
+                LinkedList<ItemDic> listaItem = conteudo[i];
+                for (ItemDic item : listaItem) {
+                    hash = hashEngine.hashCode(item.getKey());
                     novaPos = (int) (hash % novoTamanho);
 
                     if (conteudoAux[novaPos] == null) {
-                        conteudoAux[novaPos] = new LinkedList<Item>();
+                        conteudoAux[novaPos] = new LinkedList<ItemDic>();
                         qtdPosOcupadas++;
 
                     }
