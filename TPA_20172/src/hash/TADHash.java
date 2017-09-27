@@ -9,6 +9,7 @@ public abstract class TADHash {
 	protected int N;
 	HashEngine hashEngine;
         
+        
         public abstract boolean insertItem(Object key, Object elem);
 	
 	public abstract Object findElement(Object key);

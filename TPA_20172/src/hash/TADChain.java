@@ -12,13 +12,13 @@ public class TADChain extends TADHash {
     public TADChain(HashEngine he) {
         hashEngine = he;
         conteudo = new LinkedList[64];
-        N=64;
+        N = 64;
     }
 
     public TADChain(HashEngine he, int tam) {
         hashEngine = he;
         conteudo = new LinkedList[tam];
-        N=tam;
+        N = tam;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class TADChain extends TADHash {
         Object element = findElement(key);
 
         if (element != null) {
-            atualizaValorItem(key, elem);
+            teste = atualizaValorItem(key, elem);
         } else {
 
             int hash = hashEngine.hashCode(key);
@@ -49,23 +49,22 @@ public class TADChain extends TADHash {
         return teste;
     }
 
-    protected void atualizaValorItem(Object chave, Object valor) {
+    protected boolean atualizaValorItem(Object chave, Object valor) {
         int hash = hashEngine.hashCode(chave);
         int pos = Math.abs((int) (hash % N));
 
         LinkedList<ItemDic> listaElem = conteudo[pos];
-
-        if (listaElem != null) {
-            for (int i = 0; i < listaElem.size(); i++) {
-                if (listaElem.get(i) != null) {
-                    if (listaElem.get(i).getKey().equals(chave)) {
-                        listaElem.get(i).setElement(valor);
-                        break;
-                    }
+        boolean teste = false;
+        for (int i = 0; i < listaElem.size(); i++) {
+            if (listaElem.get(i) != null) {
+                if (listaElem.get(i).getKey().equals(chave)) {
+                    listaElem.get(i).setElement(valor);
+                    teste = true;
+                    break;
                 }
             }
         }
-
+        return teste;
     }
 
     @Override
