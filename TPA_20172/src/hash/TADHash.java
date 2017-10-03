@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public abstract class TADHash {
         public static ItemDic NO_SUCH_KEY = new ItemDic(null, null);
-	protected int tamanho;
+	protected int tamanho = 0;
 	protected int N;
 	HashEngine hashEngine;
         

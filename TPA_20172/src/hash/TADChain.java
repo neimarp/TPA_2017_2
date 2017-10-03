@@ -8,7 +8,13 @@ import java.util.LinkedList;
 public class TADChain extends TADHash {
 
     private LinkedList<ItemDic>[] conteudo;
-
+    
+    public TADChain() {
+        hashEngine = new HashEngineDefault();
+        conteudo = new LinkedList[64];
+        N = 64;
+    }
+    
     public TADChain(HashEngine he) {
         hashEngine = he;
         conteudo = new LinkedList[64];

@@ -7,16 +7,21 @@ import java.util.LinkedList;
 public class TADDEA extends TADHash{
     
     private ItemDic[] vetBuckets;
+    
+    public TADDEA() {
+        vetBuckets = new ItemDic[64];
+        N = 64;
+        hashEngine = new HashEngineDefault();
+    }
+    
     public TADDEA(HashEngine he) {
         vetBuckets = new ItemDic[64];
-        tamanho = 0;
         N = 64;
         hashEngine = he;
     }
 
     public TADDEA(int tam,HashEngine he) {
         vetBuckets = new ItemDic[tam];
-        tam = 0;
         N = tam;
         hashEngine = he;
     }
