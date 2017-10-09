@@ -22,6 +22,11 @@ public class ItemDic {
     public void setElement(Object element) {
         this.element = element;
     }
+
+    @Override
+    public String toString() {
+        return "NO_SUCH_KEY";
+    }
     
     
 }

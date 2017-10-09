@@ -28,7 +28,7 @@ public class TADDEA extends TADHash{
     
     @Override
     public Object findElement(Object k){
-        int i = hashEngine.hashCode(k);
+        int i = hashEngine.hashCode(k)%N;
         int p = 0;
         do {            
             ItemDic c = vetBuckets[i];
@@ -47,12 +47,12 @@ public class TADDEA extends TADHash{
     }
     @Override
     public boolean insertItem(Object k, Object o){
-        int i = hashEngine.hashCode(k);
+        int i = hashEngine.hashCode(k)%N;
         int p = 0;
         do {            
             ItemDic item = vetBuckets[i];
             if (item ==null) {
-                vetBuckets[i] = new ItemDic(k, o);
+                vetBuckets[i] = new ItemDic(k, o);tamanho++;
                 return true;
             } else {
                 i = (i+1)%N;
@@ -114,5 +114,5 @@ public class TADDEA extends TADHash{
     public void printConteudo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

@@ -37,7 +37,7 @@ public class TADChain extends TADHash {
         } else {
 
             int hash = hashEngine.hashCode(key);
-            int pos = Math.abs((hash % N));
+            int pos = hash % N;//Math.abs((hash % N));
             if (conteudo[pos] == null) {
                 conteudo[pos] = new LinkedList<ItemDic>();
                 tamanho++;
@@ -91,7 +91,7 @@ public class TADChain extends TADHash {
             }
         }
         if (item == null) {
-            return NO_SUCH_KEY.getElement();
+            return NO_SUCH_KEY;//.getElement();
         } else {
             return item.getElement();
         }
