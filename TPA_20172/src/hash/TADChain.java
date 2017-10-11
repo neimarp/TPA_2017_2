@@ -45,11 +45,11 @@ public class TADChain extends TADHash {
             ItemDic item = new ItemDic(key, elem);
             conteudo[pos].add(item);
 
-            // Verifica se o vetor atingiu 75% da taxa de ocupacao
+            // Verifica se o vetor atingiu 80% da taxa de ocupacao
             // Aumenta em 50% o tamanho do vetor
             double taxaOcupacao = (((double) (tamanho) / (double) N));
-            if (taxaOcupacao >= 0.95) {
-                redimensiona();
+            if (taxaOcupacao >= 0.80) {
+                redimensionar();
             }
         }
         return teste;
@@ -127,9 +127,9 @@ public class TADChain extends TADHash {
 
     }
 
-    protected void redimensiona() {
+    protected void redimensionar() {
 
-        int novoTamanho = (int) (tamanho * 1.5);
+        int novoTamanho = (int) (N * 1.5);
         LinkedList<ItemDic>[] conteudoAux = new LinkedList[novoTamanho];
         int hash = 0;
         int novaPos = 0;

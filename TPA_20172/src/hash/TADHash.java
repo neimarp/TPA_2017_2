@@ -31,4 +31,16 @@ public abstract class TADHash {
     public boolean empty() {
         return tamanho <= 0;
     }
+    
+    public int lenght(){return N;}
+
+    public void setN(int N) {
+        this.N = N;
+    }
+
+    public void setTamanho(int tamanho) {
+        this.tamanho = tamanho;
+    }
+    
+    
 }
