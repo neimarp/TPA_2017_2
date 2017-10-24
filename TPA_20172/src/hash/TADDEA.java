@@ -73,7 +73,7 @@ public class TADDEA extends TADHash {
 
     @Override
     public Object removeElement(Object k) {
-        int i = hashEngine.hashCode(k);
+        int i = hashEngine.hashCode(k)%N;
         int p = 0;
         do {
             ItemDic c = vetBuckets[i];
@@ -82,6 +82,7 @@ public class TADDEA extends TADHash {
             } else {
                 if (c.getKey() == k) {
                     vetBuckets[i] = null;
+                    this.tamanho--;
                     return c.getElement();
                 } else {
                     i = (i + 1) % N;
