@@ -103,7 +103,13 @@ public class AppTestaGrafoND {
         // passado como parâmetro.
         //TPA2GS.exibeGrafo(gnd);
         System.out.println();
-
+        
+        PlotarGrafico.plotarGrafo(gnd, true); //pg = new PlotarGrafico();
+        /*
+        TPA2GS tpa = new TPA2GS();
+        tpa.exibeGrafo(gnd);
+        */
+        
         System.out.println("Removendo todos os vértices:");
         for (i = 0; i < lvs.size(); i++) {
             gnd.removeVertice(lvs.get(i));
@@ -116,16 +122,15 @@ public class AppTestaGrafoND {
 
         System.out.println();
         
+        
+        
+        //PlotarGrafico.plotarGrafo(gnd, true); //pg = new PlotarGrafico();
+        
         /*
-        TPA2GS tpa = new TPA2GS();
-        tpa.exibeGrafo(gnd);
-        */
-        PlotarGrafico.plotarGrafo(gnd, true); //pg = new PlotarGrafico();
-        
-        
         AlgoGrafo algo = new AlgoGrafo();
         algo.imprimeCaminho(algo.BFS(gnd, u));
         algo.imprimeCaminho(algo.DFS(gnd, u));
+        */
     } // fim main
 
 } // fim de AppTestaGrafoND

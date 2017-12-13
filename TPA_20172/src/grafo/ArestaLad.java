@@ -1,37 +1,47 @@
 package grafo;
 
-public class ArestaLad extends Aresta{
-	
-	VerticeLad vertU;
-	VerticeLad vertV;
-	
-	public ArestaLad(VerticeLad u, VerticeLad v, float id, String label, Object elem){
-		super(id, label, elem);
-		vertU = u;
-		vertV = v;
-	}
+import java.util.LinkedList;
 
-	public VerticeLad getVertU() {
-		return vertU;
-	}
+public class ArestaLad extends Aresta {
 
-	public void setVertU(VerticeLad vertU) {
-		this.vertU = vertU;
-	}
+    VerticeLad vertU;
+    VerticeLad vertV;
 
-	public VerticeLad getVertV() {
-		return vertV;
-	}
+    public ArestaLad(VerticeLad u, VerticeLad v, int id, String label, Object elem) {
+        super(id, label, elem);
+        vertU = u;
+        vertV = v;
+    }
 
-	public void setVertV(VerticeLad vertV) {
-		this.vertV = vertV;
-	}
+    public VerticeLad getVertU() {
+        return vertU;
+    }
 
+    public void setVertU(VerticeLad vertU) {
+        this.vertU = vertU;
+    }
+
+    public VerticeLad getVertV() {
+        return vertV;
+    }
+
+    public void setVertV(VerticeLad vertV) {
+        this.vertV = vertV;
+    }
+
+    public LinkedList<Vertice> vertices() {
+        LinkedList<Vertice> lista = new LinkedList<Vertice>();
+        lista.add(getVertU());
+        lista.add(getVertV());
+        return lista;
+    }
+    
+    /*
 	public float getId() {
 		return id;
 	}
 
-	public void setId(float id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -43,5 +53,5 @@ public class ArestaLad extends Aresta{
 		this.label = label;
 	}
 	
-	
+     */
 }

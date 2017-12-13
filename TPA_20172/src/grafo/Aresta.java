@@ -2,11 +2,11 @@ package grafo;
 
 
 public class Aresta {
-	protected float id;
+	protected int id;
 	protected String label;
 	protected Object elem;
 	
-	public Aresta(float id,String label, Object elem){
+	public Aresta(int id,String label, Object elem){
 		this.id = id;
 		this.label = label;
 		this.elem = elem;
@@ -16,7 +16,7 @@ public class Aresta {
 		return id;
 	}
 
-	public void setId(float id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

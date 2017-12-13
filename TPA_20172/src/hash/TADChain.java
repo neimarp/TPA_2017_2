@@ -11,8 +11,8 @@ public class TADChain extends TADHash {
     
     public TADChain() {
         hashEngine = new HashEngineDefault();
-        conteudo = new LinkedList[64];
-        N = 64;
+        conteudo = new LinkedList[2000];
+        N = 2000;
     }
     
     public TADChain(HashEngine he) {
@@ -61,6 +61,15 @@ public class TADChain extends TADHash {
 
         LinkedList<ItemDic> listaElem = conteudo[pos];
         boolean teste = false;
+        for (ItemDic itemDic : listaElem) {
+            if (itemDic != null) {
+                if (itemDic.getKey().equals(chave)) {
+                    itemDic.setElement(valor);
+                    teste = true;
+                    break;
+                }
+            }
+        }/*
         for (int i = 0; i < listaElem.size(); i++) {
             if (listaElem.get(i) != null) {
                 if (listaElem.get(i).getKey().equals(chave)) {
@@ -69,7 +78,7 @@ public class TADChain extends TADHash {
                     break;
                 }
             }
-        }
+        }*/
         return teste;
     }
 
@@ -152,7 +161,8 @@ public class TADChain extends TADHash {
         }
 
         conteudo = conteudoAux;
-        tamanho = novoTamanho;
+        N = novoTamanho;
+        //tamanho  = novoTamanho;
     }
 
     public void printConteudo() {

@@ -61,11 +61,11 @@ public class TadMath {
 		conteudo.insertItem(chave, item);
 	}
 	
-	public float getValorPosIJ(int i,int j){
+	public int getValorPosIJ(int i,int j){
 		String chave = i + "-" + j;
 		ItemMatriz item = (ItemMatriz) conteudo.findElement(chave);
 		if(item != null){
-			return item.getValor();
+			return (int)item.getValor();
 		}
 		return 0;
 	}
