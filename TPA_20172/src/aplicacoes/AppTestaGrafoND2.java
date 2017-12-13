@@ -31,8 +31,10 @@ public class AppTestaGrafoND2 {
         } catch (IOException ex) {
             Logger.getLogger(AppTestaGrafoND2.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         TPA2GS tpa = new TPA2GS();
         tpa.exibeGrafo(gndLad);
+        
         // Se for o caso, substitua a linha acima pela sua classe de exibição GraphStream.
 
         // Cria um dicionário de vértices com o label sendo a chave do dicionário.
@@ -60,7 +62,7 @@ public class AppTestaGrafoND2 {
 
         // Enquanto não clonar todas as arestas do grafo original, faça:
         while (i < lst_es_glad.size()) {
-            // Leia a i-ésima aresta do grafo oriignal e obtenha os seus endVertices.
+            // Leia a i-ésima aresta do grafo original e obtenha os seus endVertices.
             lst_end_vertices_gnLad = gndLad.endVertices(lst_es_glad.get(i));
 
             // Faça um bkp do primeiro end vertice da aresta.
@@ -69,6 +71,7 @@ public class AppTestaGrafoND2 {
             // Se este vértice ainda não foi clonado então cloná-lo: criar um novo vértice,
             // copiar os campos dado e label, inserí-lo no grafo clone (gndMat).
             if (dicVclonados.findElement(bkpV.getLabel()).equals(TADDEA.NO_SUCH_KEY)) {
+               // System.out.println("kakak");
                 dado = bkpV.getElem();
                 v = gndMat.insereVertice(dado);
                 v.setLabel(bkpV.getLabel());

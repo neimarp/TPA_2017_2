@@ -1,17 +1,14 @@
 package aplicacoes;
 
 import atividades.ManipularArquivo;
-import hash.ItemDic;
-import hash.TADChain_;
-import hash.TADDEA;
-import hash.TADHash;
+import hash.TADChain;
 
 public class AplFinanceira {
 
     //public TADDEA numeros = new TADDEA();
     //public TADDEA moedas = new TADDEA();
-    public TADChain_ numeros = new TADChain_();
-    public TADChain_ moedas = new TADChain_();
+    public TADChain numeros = new TADChain();
+    public TADChain moedas = new TADChain();
     public AplFinanceira() {
         numeros.insertItem(0, "zero");
         numeros.insertItem(1, "um");

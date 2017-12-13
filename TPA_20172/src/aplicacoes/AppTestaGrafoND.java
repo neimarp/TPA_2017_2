@@ -104,11 +104,11 @@ public class AppTestaGrafoND {
         //TPA2GS.exibeGrafo(gnd);
         System.out.println();
         
-        PlotarGrafico.plotarGrafo(gnd, true); //pg = new PlotarGrafico();
-        /*
+        //PlotarGrafico.plotarGrafo(gnd, true); //pg = new PlotarGrafico();
+        
         TPA2GS tpa = new TPA2GS();
         tpa.exibeGrafo(gnd);
-        */
+        
         
         System.out.println("Removendo todos os vértices:");
         for (i = 0; i < lvs.size(); i++) {

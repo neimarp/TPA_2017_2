@@ -1,19 +1,19 @@
 package grafo;
 
 import java.util.LinkedList;
-import hash.TADChain;
+import hash.TADChainP;
 import tadMath.TadMath;
 
 public class GrafoNDMat extends Grafo {
 
     TadMath matriz;
-    TADChain vertices;
-    TADChain arestas;
+    TADChainP vertices;
+    TADChainP arestas;
 
     public GrafoNDMat() {
         matriz = new TadMath();
-        vertices = new TADChain();
-        arestas = new TADChain();
+        vertices = new TADChainP();
+        arestas = new TADChainP();
     }
 
     @Override
@@ -22,6 +22,7 @@ public class GrafoNDMat extends Grafo {
         LinkedList<Vertice> listaVertices = new LinkedList<>();
 
         for (Object object : lista) {
+            //System.out.println("elemnt");
             listaVertices.add((Vertice) object);
         }
 
@@ -194,6 +195,7 @@ public class GrafoNDMat extends Grafo {
     @Override
     public Vertice insereVertice(Object o) {
         int id = vertices.size()+1;
+        //System.out.println(id);
         Vertice v = new Vertice(id,"",o);
         vertices.insertItem(id, v);
         return v;

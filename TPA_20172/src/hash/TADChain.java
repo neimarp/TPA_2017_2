@@ -31,10 +31,10 @@ public class TADChain extends TADHash {
     public boolean insertItem(Object key, Object elem) {
         boolean teste = false;
         Object element = findElement(key);
-
+        /*
         if (element != null) {
             teste = atualizaValorItem(key, elem);
-        } else {
+        } else {*/
 
             int hash = hashEngine.hashCode(key);
             int pos = hash % N;//Math.abs((hash % N));
@@ -44,20 +44,23 @@ public class TADChain extends TADHash {
             }
             ItemDic item = new ItemDic(key, elem);
             conteudo[pos].add(item);
-
+            if (!conteudo[pos].isEmpty()) {
+                teste = true;
+            
+            }
             // Verifica se o vetor atingiu 80% da taxa de ocupacao
             // Aumenta em 50% o tamanho do vetor
             double taxaOcupacao = (((double) (tamanho) / (double) N));
             if (taxaOcupacao >= 0.80) {
                 redimensionar();
             }
-        }
+        //}
         return teste;
     }
 
     protected boolean atualizaValorItem(Object chave, Object valor) {
         int hash = hashEngine.hashCode(chave);
-        int pos = Math.abs((int) (hash % N));
+        int pos = hash % N;
 
         LinkedList<ItemDic> listaElem = conteudo[pos];
         boolean teste = false;

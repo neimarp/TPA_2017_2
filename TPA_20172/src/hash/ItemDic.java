@@ -5,10 +5,16 @@ package hash;
 public class ItemDic {
     private Object k;
     private Object element;
-
+    public int hash;
     public ItemDic(Object k, Object element) {
         this.k = k;
         this.element = element;
+    }
+
+    ItemDic(Object k, Object o, int h) {
+        this.k = k;
+        this.element = element;
+        hash = h;
     }
 
     public Object getKey() {
